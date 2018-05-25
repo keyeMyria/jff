@@ -25,7 +25,7 @@ const entries = fs.readdirSync(appPath)
 
 console.log('\x1b[36m', 'the entries are', ...entries.map(item => `\n${item.name}: ${item.path}`), '\x1b[0m');
 
-const common = {PORT: 9000, ENV_PRO: 'production', ENV_DEV: 'development', distPath};
+const common = {PORT: 9000, ENV_PRO: 'production', ENV_DEV: 'development', proxy: false, mock: true, distPath};
 
 const {ENV_PRO, ENV_DEV} = common;
 const isDev = process.env.NODE_ENV === ENV_DEV;
@@ -46,7 +46,7 @@ const config = {
             '.js', '.jsx'
         ], // 此选项不再需要传一个空字符串。
         alias: {
-            APPS: path.resolve(srcPath, 'apps'),
+            ENTRIES: path.resolve(srcPath, 'entries'),
             COMPONENTS: path.resolve(srcPath, 'components'),
             UTILS: path.resolve(srcPath, 'utils'),
             EXCEPTION: path.resolve(srcPath, 'exception')

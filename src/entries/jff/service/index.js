@@ -3,8 +3,6 @@ import MD5 from 'UTILS/MD5';
 import {ServerError} from 'EXCEPTION';
 import transferRequestJSON from "UTILS/transferRequestJSON";
 
-const apiUrl = 'http://wd.a.wodedagong.com';
-
 function getRequestInit(req) {
     return {
         method: 'POST',
@@ -31,13 +29,13 @@ async function toAsync(apiFetch) {
 
 
 export const getBrokerInfo = param => toAsync(
-    fetch(apiUrl + '/OP_ECM_Manager/OP_ECM_GetBrokerInfo', getRequestInit(param))
+    fetch('/OP_ECM_Manager/OP_ECM_GetBrokerInfo', getRequestInit(param))
 );
 export const getLaborInfo = param => toAsync(
-    fetch(apiUrl + '/OP_ECM_Manager/GetLaborInfo', getRequestInit(param))
+    fetch('/OP_ECM_Manager/GetLaborInfo', getRequestInit(param))
 );
 
 // 登录
 export function login(param) {
-    return toAsync(fetch(apiUrl + '/login', getRequestInit(param)));
+    return toAsync(fetch('/login', getRequestInit(param)));
 }
