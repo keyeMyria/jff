@@ -1,10 +1,10 @@
 import React from "react";
 import {Layout, Icon} from 'antd';
-import '../assets/main.less';
-import mainTab from "../routes/mainTab";
-import TabView from "../views/TabView";
-import NavView from "../views/NavView";
-import {INIT_NAV} from '../config/NavConfig';
+import 'JFF/assets/main.less';
+import mainTab from "JFF/routes/mainTab";
+import TabView from "JFF/views/TabView";
+import NavView from "JFF/views/NavView";
+import {INIT_NAV} from 'JFF/config/NavConfig';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {observer} from "mobx-react";
 

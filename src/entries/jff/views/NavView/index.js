@@ -1,6 +1,6 @@
 import React from 'react';
 import {Layout, Icon, Menu} from 'antd';
-import {NAV_LIST} from '../../config/NavConfig';
+import {NAV_LIST} from 'JFF/config/NavConfig';
 
 export default class extends React.Component {
 

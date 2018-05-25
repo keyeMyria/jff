@@ -12,10 +12,10 @@ const rootPath = path.resolve(__dirname, '..');
 const srcPath = path.join(rootPath, 'src');
 const distPath = path.join(rootPath, 'dist');
 
-let appPath = path.join(srcPath, 'entries');
-const entries = fs.readdirSync(appPath)
+let entriesPath = path.join(srcPath, 'entries');
+const entries = fs.readdirSync(entriesPath)
     .reduce((pre, child) => {
-        let childPath = `${appPath}/${child}`;
+        let childPath = `${entriesPath}/${child}`;
         let info = fs.statSync(childPath);
         if (info.isDirectory() && fs.readdirSync(childPath).includes('index.js') && fs.readdirSync(childPath).includes('index.html')) {
             pre.push({name: child, path: childPath});
@@ -67,8 +67,8 @@ const config = {
                         cacheDirectory: isDev,
                         plugins: [
                             ["import", [
-                                {libraryName: "antd-mobile", style: 'css'},
-                                {libraryName: "antd", libraryDirectory: "es", style: 'css'}
+                                {libraryName: "antd-mobile", style: true},
+                                {libraryName: "antd", style: true}
                             ]]
                         ]
                     }
@@ -78,18 +78,18 @@ const config = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader'
+                    'css-loader?importLoaders=1',
+                    'postcss-loader'
                 ]
             },
             {
                 test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader?importLoaders=1',
+                    'postcss-loader',
+                    'less-loader?javascriptEnabled=true'
+                ]
             },
             {test: /\.(png|svg|jpe?g|gif)$/, use: ['file-loader']},
             {test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['file-loader']},
@@ -109,7 +109,7 @@ const config = {
         })
     ]
 };
-
+entries.forEach(item => config.resolve.alias[item.name.toUpperCase()] = path.join(entriesPath, item.name));
 if (isDev) {
     entries.forEach(item => config.entry[item.name].push('webpack-hot-middleware/client?reload=true'));
     config.output = {

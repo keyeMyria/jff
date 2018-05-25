@@ -1,7 +1,5 @@
-import {getUser, getDeviceId} from './Storage';
-import MD5 from 'UTILS/MD5';
 import {ServerError} from 'EXCEPTION';
-import transferRequestJSON from "UTILS/transferRequestJSON";
+import transferRequestJSON from "../utils/transferRequestJSON";
 
 function getRequestInit(req) {
     return {
@@ -26,7 +24,6 @@ async function toAsync(apiFetch) {
         throw new ServerError(response.message);
     }
 }
-
 
 export const getBrokerInfo = param => toAsync(
     fetch('/OP_ECM_Manager/OP_ECM_GetBrokerInfo', getRequestInit(param))

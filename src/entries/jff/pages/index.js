@@ -1,20 +1,20 @@
 import React from "react";
-import '../assets/main.less';
-import store, {homeStore} from "../store";
-import {Provider} from 'mobx-react';
-import {LocaleProvider} from 'antd';
-import zhCN from 'antd/lib/locale-provider/zh_CN';
+import 'JFF/assets/main.less';
+import {homeStore} from "JFF/store";
 import Home from './Home';
+import {getUser} from 'JFF/utils/JffStorage';
+import {Redirect} from 'react-router-dom';
+import {inject, observer} from "mobx-react";
 
-export default class extends React.PureComponent {
+@inject('authStore')
+@observer
+export default class extends React.Component {
+
     render() {
-        return (
-            <LocaleProvider locale={zhCN}>
-                <Provider {...store}>
-                    <Home {...this.props} homeStore={homeStore}/>
-                </Provider>
-            </LocaleProvider>
-        );
+        const {isAuth} = this.props.authStore;
+        return isAuth ?
+            <Home homeStore={homeStore}/> :
+            <Redirect to={{pathname: '/jff/login', state: {from: this.props.location}}}/>;
     }
 }
 

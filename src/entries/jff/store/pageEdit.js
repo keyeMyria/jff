@@ -1,5 +1,5 @@
 import {observable, action} from "mobx";
-import {getBrokerInfo, getLaborInfo} from '../service';
+import {getBrokerInfo, getLaborInfo} from '../service/OP_ECM_Manager';
 import {BaseView, BaseViewStore} from "./BaseViewStore";
 
 export class View extends BaseView {

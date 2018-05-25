@@ -54,6 +54,7 @@
     "mobx": "^4.3.0",
     "mobx-react": "^5.0.0",
     "mobx-utils": "^4.0.0",
+    "postcss-loader": "^2.1.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-loadable": "^5.4.0",

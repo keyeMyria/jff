@@ -1,4 +1,4 @@
-import MD5 from './MD5';
+import MD5 from 'UTILS/MD5';
 
 const AppSetting = window.AppSetting || {
     AppVersion: '1.0.0',
