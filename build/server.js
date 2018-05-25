@@ -11,8 +11,8 @@ if (config.mode === common.ENV_DEV) {
     app.use(fallback({
         // index: '/app.html',
         rewrites: [
-            {from: /^\/app(\/|$)/, to: '/app.html'},
-            {from: /^\/test(\/|$)/, to: '/test.html'}
+            {from: /^\/jff(\/|$)/, to: '/jff/index.html'},
+            {from: /^\/test(\/|$)/, to: '/test/index.html'}
         ]
     }));
     const compiler = webpack(config);

@@ -43,7 +43,7 @@ class Storage {
     }
 }
 
-const name = 'oa_storage';
+const name = 'jff_storage';
 let localStorage = new Storage(name, self.localStorage);
 if (!self.localStorage.getItem(name)) {
     localStorage.build();

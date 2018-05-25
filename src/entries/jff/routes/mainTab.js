@@ -1,5 +1,4 @@
 import React from 'react';
-import {tabWrap} from '../pages';
 import Loadable from "react-loadable";
 import LazyLoadComponent from 'COMPONENTS/lazyLoad';
 
@@ -28,35 +27,33 @@ const PageC = Loadable({
     loading: LazyLoadComponent
 });
 
+const path = '/jff';
+
 export default {
-    path: '/app',
+    path,
     children: [
         {
-            path: '/app/overview',
-            component: OverView,
-            exact: true
+            path: `${path}/overview`,
+            component: OverView
         },
         {
-            path: '/app/pageEdit',
-            component: PageEdit,
-            exact: true
+            path: `${path}/pageEdit`,
+            component: PageEdit
         },
         {
-            path: '/app/pageA',
-            component: PageA,
-            exact: true
+            path: `${path}/pageA`,
+            component: PageA
         },
         {
-            path: '/app/pageA/:xxId',
-            component: PageAChild,
-            exact: true
+            path: `${path}/pageA/:xxId`,
+            component: PageAChild
         },
         {
-            path: '/app/pageB',
+            path: `${path}/pageB`,
             component: PageB
         },
         {
-            path: '/app/pageC',
+            path: `${path}/pageC`,
             component: PageC
         }
     ]

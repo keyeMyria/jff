@@ -140,13 +140,13 @@ if (isDev) {
             port: common.PORT,
             proxy: `http://127.0.0.1:${common.PORT}/`,
             logConnections: false,
-            startPath: 'app',
+            startPath: entries[0].name,
             notify: false
         }, {reload: false})
     );
     config.plugins.push(...entries.map(item => new HtmlWebpackPlugin({
         title: item.name,
-        filename: `${item.name}.html`,
+        filename: `${item.name}/index.html`,
         template: path.join(item.path, 'index.html'),
         chunks: [item.name],
         chunksSortMode: 'none'

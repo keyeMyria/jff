@@ -22,19 +22,19 @@ export default class extends React.Component {
             <div>
                 <Icon type="rollback"/>
                 <a onClick={() => {
-                    history.push('/app/pageA');
+                    history.push('/jff/pageA');
                 }}>返回PageA</a>
 
                 {match.params.xxId === 'step1' &&
                 <div>
                     <a onClick={() => {
-                        history.push('/app/pageA/step2');
+                        history.push('/jff/pageA/step2');
                     }}>toStep2</a>
                 </div>}
                 {match.params.xxId === 'step2' &&
                 <div>
                     <a onClick={() => {
-                        history.push('/app/pageA/step1');
+                        history.push('/jff/pageA/step1');
                     }}>toStep1</a>
                 </div>}
                 <div>this is pageA {match.params.xxId}</div>

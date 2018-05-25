@@ -7,7 +7,8 @@ import history from './routes/history';
 ReactDOM.render((
     <Router history={history}>
         <Switch>
-            {route.children.map(item => <Route key={item.path} path={item.path} component={item.component}/>)}
+            {route.children.map(item => <Route key={item.path} path={item.path} component={item.component}
+                                               exact={item.exact || false}/>)}
             <Redirect to={route.redirect}/>
         </Switch>
     </Router>

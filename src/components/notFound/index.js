@@ -6,9 +6,12 @@ export default class NotFound extends React.Component {
         return (
             <main className="">
                 <h3>Page not found. Are you lost ?</h3>
-                <Link to="/app">APP</Link>
-                <Link to="/oa">OA</Link>
-                <Link to="/workbench">WORKBENCH</Link>
+                <div>
+                    <Link to="/jff">记返费</Link>
+                </div>
+                <div>
+                    <Link to="/test">TEST</Link>
+                </div>
             </main>
         );
     }
