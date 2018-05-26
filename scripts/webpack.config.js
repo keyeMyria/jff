@@ -7,7 +7,7 @@ const webpackConfig = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer');
-
+const antdTheme = require('./theme-antd');
 const rootPath = path.resolve(__dirname, '..');
 const srcPath = path.join(rootPath, 'src');
 const distPath = path.join(rootPath, 'dist');
@@ -88,7 +88,7 @@ const config = {
                     MiniCssExtractPlugin.loader,
                     'css-loader?importLoaders=1',
                     'postcss-loader',
-                    'less-loader?javascriptEnabled=true'
+                    `less-loader?{"modifyVars":${JSON.stringify(antdTheme)},"javascriptEnabled":true,"sourceMap":true}`
                 ]
             },
             {test: /\.(png|svg|jpe?g|gif)$/, use: ['file-loader']},
@@ -117,6 +117,7 @@ if (isDev) {
         chunkFilename: '[name].[hash:6].chunk.js',
         publicPath: '/'
     };
+    config.devtool='eval-source-map';
     config.module.rules
         .push({
             test: /\.(js|jsx)$/,

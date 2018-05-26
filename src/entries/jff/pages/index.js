@@ -13,7 +13,7 @@ export default class extends React.Component {
     render() {
         const {isAuth} = this.props.authStore;
         return isAuth ?
-            <Home {...this.props} homeStore={homeStore}/> :
+            <Home homeStore={homeStore}/> :
             <Redirect to={{pathname: '/jff/login', state: {from: this.props.location}}}/>;
     }
 }

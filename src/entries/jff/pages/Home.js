@@ -5,11 +5,12 @@ import mainTab from "JFF/routes/mainTab";
 import TabView from "JFF/views/TabView";
 import NavView from "JFF/views/NavView";
 import {INIT_NAV} from 'JFF/config/NavConfig';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import {observer} from "mobx-react";
 
 const {Header, Content, Footer} = Layout;
 
+@withRouter
 @observer
 export default class extends React.Component {
 
